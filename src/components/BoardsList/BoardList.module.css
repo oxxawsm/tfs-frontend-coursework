@@ -1,0 +1,16 @@
+.collection {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    margin-top: 15vh;
+}
+
+.wrapper {
+    background: rgba(255,255,255,0.85);
+    padding: 2rem;
+    border-radius: 10px;
+    min-width: 40vh;
+}

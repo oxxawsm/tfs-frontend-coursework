@@ -1,0 +1,9 @@
+.board {
+    position: absolute;
+}
+
+.sectionWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+}

@@ -1,0 +1,23 @@
+.button {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 8px 8px 8px 8px;
+    cursor: pointer;
+    border-radius: 8px;
+    height: 36px;
+    width: 275px;
+    padding-left: 8px;
+    min-width: 275px;
+    font-size: 14px;
+    line-height: 20px;
+    opacity: 1;
+}
+
+.button:hover {
+    transition: 0.3s;
+}
+
+.buttons {
+    display: inline-block;
+}

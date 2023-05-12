@@ -1,0 +1,15 @@
+.miniboard {
+    position: relative;
+    display: flex;
+    height: 80px;
+    width: 160px;
+    border-radius: 5px;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    color: #fff;
+    background-color: #c05299;
+    line-height: 20px;
+    cursor: pointer;
+    font-size: 16px;
+}

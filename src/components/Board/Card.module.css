@@ -1,0 +1,37 @@
+.wrapper {
+    font-size: 15px;
+    margin: 8px;
+}
+
+.card {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-direction: row;
+}
+
+.card:hover {
+    background-color: #dac3e8;
+}
+
+.card:hover .options {
+    visibility: visible;
+}
+
+.cardContent {
+    display: inline-block;
+}
+
+.options {
+    visibility: hidden;
+    display: inline-block;
+    margin-right: 15px;
+    border-radius: .3rem;
+    padding: 0.4rem 0.6rem 0.4rem 0.6rem;
+    opacity: 0.7;
+}
+
+.options:hover {
+    background-color: #c19ee0;
+}
