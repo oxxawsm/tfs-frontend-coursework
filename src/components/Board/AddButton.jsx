@@ -57,7 +57,7 @@ class AddButton extends Component {
     renderAddButton = () => {
 
         const section = this.props.section
-        const buttonText = section ? 'Add another card' : 'Add another list';
+        const buttonText = section ? 'Add another card' : 'Add another section';
 
         return (
             <Button className={styles.button}>
@@ -69,8 +69,8 @@ class AddButton extends Component {
 
     renderForm = () => {
         const { section } = this.props;
-        const placeholderText = section ? 'Enter a title for this card...' : 'Enter a list title...';
-        const buttonText = section ? 'Add Card' : 'Add List';
+        const placeholderText = section ? 'Enter a title for this card...' : 'Enter a section title...';
+        const buttonText = section ? 'Add Card' : 'Add Section';
 
         return (
             <div>
@@ -106,7 +106,7 @@ class AddButton extends Component {
                             textTransform: 'capitalize',
                             fontSize: '14px',
                         }}
-                        onMouseDown={section ? this.handleAddCard : this.handleAddList}
+                        onMouseDown={section ? this.handleAddCard : this.handleAddSection}
                         title={buttonText}
                         variant='contained'
                     >
@@ -135,4 +135,8 @@ class AddButton extends Component {
     }
 }
 
-export default AddButton
+const mapStateToProps = state => ({
+    board: state.board
+});
+
+export default connect(mapStateToProps, { addSection, addCard, updateBoard })(AddButton)

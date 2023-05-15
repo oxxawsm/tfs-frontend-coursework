@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from "react-redux";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import DefaultRoute from "./components/DefaultRoute";
-// import { Provider } from 'react-redux/es';
+import { Provider } from 'react-redux/es';
 
 import Header from './components/Navbar/header';
 import Board from './components/Board/Board';
@@ -15,27 +14,23 @@ import Section from './components/Board/Section';
 
 
 function App(props) {
+  const { isAuthenticated} = props.auth || {};
 
   return (
       
     <Router>
-      <Header/>
+      <Header isAuthenticated={isAuthenticated}/>
       {/* <SignIn/> */}
       {/* <SignUp/>  */}
       {/* <BoardList/> */}
       {/* <BoardCard/> */}
      {/* <Section/> */}
-     <Board/>
+     {/* <Board/> */}
 
       <Routes>
-        {/* <DefaultRoute
-          exact path='/'
-          // component={BoardList}
-
-        />  */}
-        <Route exact path='/' element={BoardList}/>
+        {!isAuthenticated ? <Route path="/signin" element={SignIn} /> : <Route path="/" element={BoardList} />}
  
-        <Route path='/signin' element={SignIn}/>
+        {/* <Route path='/signin' element={SignIn}/> */}
         <Route path='/signup' element={SignUp}/>
         <Route path='/board/:id'/> 
       </Routes>
@@ -43,4 +38,10 @@ function App(props) {
   );
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+      auth: state.auth
+  };
+}
+
+export default connect(mapStateToProps)(App);

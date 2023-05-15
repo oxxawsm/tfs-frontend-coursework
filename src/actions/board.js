@@ -1,3 +1,4 @@
+import { Firebase } from "../firebase/firebaseConfig";
 
 export const SET_BOARD_ID = "SET_BOARD_ID";
 export const GET_BOARD_REQUEST = "GET_BOARD_REQUEST";
@@ -58,6 +59,19 @@ export const getUpdateBoard = () => {
     }
 }
 
+export const getBoardError = (uid) => {
+    return {
+        type: GET_BOARD_FAILED,
+        uid
+    };
+};
+
+export const updateBoardError = () => {
+    return {
+        type: UPDATE_BOARD_FAILED,
+    };
+};
+
 // добавление раздела
 export const addSection = (title) => {
     return{
@@ -74,3 +88,45 @@ export const deleteSection = (sectionId) => {
     }
 }
 
+export const updateBoard = (board) => dispatch => {
+    const user = Firebase.auth().currentUser;
+    if (!user) {
+        dispatch(updateBoardError());
+    } else {
+        dispatch(requestUpdateBoard());
+        Firebase.database()
+            .ref('/board/')
+            .child(board.boardId)
+            .set(board).then(() => {
+                dispatch(getUpdateBoard());
+            }).catch((err) => {
+                dispatch(updateBoardError());
+            });
+    }
+};
+
+export const loadBoard = (uid) => dispatch => {
+    dispatch(requestBoard());
+
+    Firebase.database().ref('/board/' + uid).once('value').then(function (snapshot) {
+        const board = {
+            boardId: snapshot.val().boardId,
+            sections: snapshot.val().sections,
+        }
+        dispatch(getBoard(board));
+    }).catch((err) => {
+        dispatch(getBoardError(uid));
+    });
+};
+
+export const listenBoard = (uid) => dispatch => {
+    Firebase.database().ref('/board/' + uid).on('value', function (snapshot) {
+        if (snapshot.val() != null) {
+            const board = {
+                boardId: snapshot.val().boardId,
+                sections: snapshot.val().sections,
+            }
+            dispatch(getBoard(board));
+        }
+    });
+};

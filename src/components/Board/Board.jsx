@@ -4,13 +4,27 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import Section from './Section';
 
 import styles from './Board.module.css'
-import {loadBoard, updateBoard, sorting } from '../../actions/board';
+import { listenBoard, loadBoard, updateBoard, sorting } from '../../actions/board';
 import AddButton from './AddButton';
 
 class Board extends Component {
 
+    constructor(props) {
+        super(props);
+
+        const boardId = this.props.match.params.id;
+        this.props.loadBoard(boardId);
+    }
+
+    componentDidMount() {
+        const boardId = this.props.match.params.id;
+        this.props.listenBoard(boardId);
+    }
+
+
 
     render() {
+        const {sections} = this.props.board
         return (
 
                     <div className={styles.board}>
@@ -26,4 +40,11 @@ class Board extends Component {
     }
 }
 
-export default Board
+const mapStateToProps = (state) => {
+    return{
+        board: state.board
+    }
+};
+
+
+export default connect(mapStateToProps, { updateBoard, loadBoard, listenBoard})(Board)

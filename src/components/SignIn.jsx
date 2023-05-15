@@ -5,7 +5,34 @@ import { NavLink, Navigate } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import styles from './SignIn.module.css'
 
+import { loginUser } from "../actions";
+
 export default function SignIn(props) {
+
+    const dispatch = useDispatch();
+    const [state, setState] = useState({
+        email: '',
+        password: '',
+        toFrontpage: false,
+    });
+
+    const onChange = (e) => {
+        setState({
+            ...state,
+            [e.target.id]: e.target.value
+        });
+    };
+
+    async function handleSignIn(e) {
+        e.preventDefault();
+        dispatch(loginUser(state.email, state.password, props.history));
+        setState({ toFrontpage: true });
+    };
+
+    // const redirect = (
+    //     <Navigate to="/" />
+    // );
+
     return (
         <Container component='main' maxWidth='xs'>
         <div className={styles.formWrapper}>
@@ -24,6 +51,8 @@ export default function SignIn(props) {
                     autoComplete="email"
                     autoFocus
                     color='secondary'
+                    onChange={onChange}
+                    
                 />
                 <TextField
                     variant="outlined"
@@ -35,6 +64,7 @@ export default function SignIn(props) {
                     type="password"
                     id="password"
                     color='secondary'
+                    onChange={onChange}
                 />
 
                 <Button
@@ -55,5 +85,6 @@ export default function SignIn(props) {
         </div>
     </Container> 
     )
+    
 
 }

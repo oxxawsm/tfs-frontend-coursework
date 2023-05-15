@@ -1,26 +1,27 @@
 import {
     GET_SECTIONS,
-    DRAG_HAPPENED,
+    // DRAG_HAPPENED,
     ADD_CARD,
     ADD_SECTION,
     GET_BOARD_SUCCESS,
     GET_BOARD_FAILED,
-    CREATE_BOARD_SUCCESS,
     DELETE_CARD,
     DELETE_SECTION,
-} from "../actions/";
+    CREATE_BOARD_SUCCESS 
+} from '../actions';
+
+import { v4 as uuidv4 } from 'uuid';
 
 function generateId() {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    return Array.from({length: 24}, () =>
-        chars.charAt(Math.floor(Math.random() * chars.length))).join('');
-  }
+    return (new uuidv4())
+}
+
   
 
 const initialState = {
     boardId: generateId(),
     title: '',
-    lists: [],
+    sections: [],
 };
 
 const board = (state = initialState, action) => {

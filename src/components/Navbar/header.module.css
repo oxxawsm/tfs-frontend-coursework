@@ -22,3 +22,13 @@
     background-color: rgba(255, 255, 255, 0.436);
     cursor: pointer;
 }
+
+.signLink {
+    text-decoration: none;
+}
+
+.buttonsCont {
+    justify-content: flex-end;
+    display: inline-flex;
+    align-items: center;
+}

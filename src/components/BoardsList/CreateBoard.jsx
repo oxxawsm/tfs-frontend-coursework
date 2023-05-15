@@ -12,6 +12,8 @@ import { connect } from 'react-redux';
 import styles from './CreateBoard.module.css'
 import { Container } from '@mui/material';
 
+import { createBoard, loadUserBoards } from '../../actions';
+
 class CreateBoard extends Component {
     state = {
         open: false,
@@ -34,19 +36,16 @@ class CreateBoard extends Component {
         e.preventDefault();
         // попытка зарегаться
         this.props.createBoard(this.state.title);
-        // this.props.loadUserBoards();
+        this.props.loadUserBoards();
         this.Open();
     }
 
     render() {
         return (
-            <Fragment>
-
+            <>
                     <Button variant="contained" color="primary" onClick={this.Open}>
                             Создать доску
                     </Button>
-
-
                 <Dialog open={this.state.open} onClose={this.Open} >
                     <DialogTitle>Создать доску</DialogTitle>
                     <form action="/" method="POST" onSubmit={this.onSubmit}>
@@ -72,9 +71,9 @@ class CreateBoard extends Component {
                         </DialogActions>
                     </form>
                 </Dialog>
-            </Fragment>
+            </>
         )
     }
 }
 
-export default CreateBoard
+export default connect(null, { createBoard, loadUserBoards })(CreateBoard)
