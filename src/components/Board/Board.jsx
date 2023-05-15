@@ -22,19 +22,26 @@ class Board extends Component {
     }
 
 
-
     render() {
         const {sections} = this.props.board
         return (
-
+            <div>
+            {this.props.auth.isAuthenticated}
                     <div className={styles.board}>
                                <div className={styles.sectionWrapper}>
+                               {(sections != null) ? sections.map((section, index) => (
                                         <Section 
+                                            index={index}
+                                            listID={section.id}
+                                            title={section.title}
+                                            key={section.id}
+                                            cards={section.cards}
                                         />
-
+                                )) : null}
                                     <AddButton type='section'/>
                                 </div>
 
+                    </div>
                     </div>
         )
     }
@@ -42,7 +49,8 @@ class Board extends Component {
 
 const mapStateToProps = (state) => {
     return{
-        board: state.board
+        board: state.board,
+        auth: state.auth,
     }
 };
 

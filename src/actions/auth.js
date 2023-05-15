@@ -1,5 +1,7 @@
 import { Firebase } from "../firebase/firebaseConfig";
 
+
+
 export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAILURE";
@@ -84,6 +86,7 @@ const verifySuccess = () => {
     };
 };
 
+
 export const loginUser = (email, password, history) => async dispatch => {
     dispatch(requestLogin());
     Firebase
@@ -109,7 +112,7 @@ export const registerUser = (email, password, displayName, callback) => async di
                 const email = userCredential.user.email.replace(".", ","); 
                 const userId = userCredential.user.uid;
                 const name = userCredential.user.displayName;
-                Firebase.database().ref('/users/' + userId).set({
+                Firebase.database().ref('/users/${userId}').set({
                     email: email,
                     name: name
                 });

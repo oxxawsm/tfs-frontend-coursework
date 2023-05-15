@@ -35,14 +35,13 @@ const Header = (props) => {
     return (
         <nav className={styles.headerNav}>
             <Link to='/'>
-            <button className={styles.Buttons}>
-                <HomeIcon/>
-            </button>
+                <button className={styles.Buttons}>
+                    <HomeIcon/>
+                </button>
             </Link>
             <div className={styles.buttonsCont}>
-            {isAuthenticated ? isLoggedIn : isLoggedOut} 
+            {isAuthenticated ? isLoggedIn : isLoggedOut}
             </div>
-            {/* <button className={styles.Buttons}>Войти</button> */}
         </nav>
 
     )

@@ -30,6 +30,10 @@ const SignUp = ({ auth, history }) => {
         dispatch(registerUser(state.email, state.password, state.displayName, () => history.push("/")));
     };
 
+    const navigate = (
+        <Navigate to="/" />
+    );
+
 
     const signUp = (
         <Container component='main' maxWidth='xs'>
@@ -74,7 +78,7 @@ const SignUp = ({ auth, history }) => {
                     color='secondary'
                     onChange={onChange}
                 />
-
+                <div>{auth.errorMessage}</div>
                 <Button
                     className={styles.button}
                     type="submit"

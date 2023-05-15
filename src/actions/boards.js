@@ -73,6 +73,7 @@ export const createBoard = (title) => dispatch => {
         });
         dispatch(receiveCreateBoard(key));
     }
+    
 };
 
 export const deleteBoard = (boardId) => dispatch => {
@@ -96,11 +97,11 @@ export const deleteBoard = (boardId) => dispatch => {
 
 export const loadUserBoards = () => dispatch => {
     dispatch(requestBoards());
-    const user = Firebase.auth().currentUser;
+    // const user = Firebase.auth().currentUser;
     // список boardId из /userBoards/
     // список boards titles из /boards/ с помощью boardIds
     let boards = [];
-    Firebase.database().ref('/userBoards/' + user.uid).once('value', function (snapshot) {
+    Firebase.database().ref('/userBoards/').once('value', function (snapshot) {
         snapshot.forEach(function (data) {
             Firebase.database().ref('/boards/' + data.key).once('value', function (snap) {
                 if (snap.exists()) {

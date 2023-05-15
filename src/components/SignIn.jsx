@@ -26,7 +26,7 @@ export default function SignIn(props) {
     async function handleSignIn(e) {
         e.preventDefault();
         dispatch(loginUser(state.email, state.password, props.history));
-        setState({ toFrontpage: true });
+        // setState({ toFrontpage: true });
     };
 
     // const redirect = (
@@ -85,6 +85,5 @@ export default function SignIn(props) {
         </div>
     </Container> 
     )
-    
 
 }

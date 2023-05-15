@@ -6,7 +6,8 @@ import CreateBoard from './CreateBoard';
 import styles from './BoardList.module.css'
 import BoardMini from './BoardMini';
 
-import { loadBoard, loadUserBoards, updateBoard } from '../../actions';
+
+import { loadBoard, loadUserBoards} from '../../actions';
 
 class BoardList extends Component {
     constructor(props) {
@@ -16,6 +17,7 @@ class BoardList extends Component {
 
     componentDidMount() {
         this.props.loadUserBoards();
+
     };
 
     handleClickBoard(e, boardId) {
@@ -34,9 +36,9 @@ class BoardList extends Component {
                     <div className={styles.boards}>
                     {
                         this.props.boards.boards.map((board, index) => (
-                            <div key={board.boardId}>
+                            <BoardMini onClick={(e) => this.handleClickBoard(e, board.boardId)} index={index} title={board.title} key={board.boardId} boardId={board.boardId}>
 
-                            </div>
+                            </BoardMini>
                         ))
                     }
 
@@ -53,4 +55,4 @@ const mapStateToProps = state => ({
     boards: state.boards
 });
 
-export default connect(mapStateToProps, { loadUserBoards, loadBoard, updateBoard })(BoardList)
+export default connect(mapStateToProps, { loadUserBoards, loadBoard })(BoardList)
