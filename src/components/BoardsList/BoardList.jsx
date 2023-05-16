@@ -1,13 +1,12 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import styles from './BoardList.module.css'
 
 import CreateBoard from './CreateBoard';
-import styles from './BoardList.module.css'
 import BoardMini from './BoardMini';
 
-
-import { loadBoard, loadUserBoards} from '../../actions';
+import {  loadUserBoards, loadBoard} from '../../actions';
 
 class BoardList extends Component {
     constructor(props) {
@@ -34,16 +33,20 @@ class BoardList extends Component {
                 <div className={styles.wrapper}>
                 <h3>Ваши доски</h3>
                     <div className={styles.boards}>
-                    {
-                        this.props.boards.boards.map((board, index) => (
-                            <BoardMini onClick={(e) => this.handleClickBoard(e, board.boardId)} index={index} title={board.title} key={board.boardId} boardId={board.boardId}>
+                        {this.props.boards.boards.map((board, index) => (
+                                <div key={board.boardId}>
+                                    <BoardMini 
+                                    onClick={(e) => this.handleClickBoard(e, board.boardId)} 
+                                    index={index} 
+                                    title={board.title}
+                                    key={board.boardId} 
+                                    boardId={board.boardId}
+                                    />
+                                </div>
 
-                            </BoardMini>
-                        ))
-                    }
-
-                    <CreateBoard />
+                            ))}
                     </div>
+                    <CreateBoard />
                 </div>
             </div>
         )

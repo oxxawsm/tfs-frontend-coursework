@@ -35,9 +35,7 @@ const Section = ({title, cards, sectionId, index}) => {
 
                     <AddButton sectionId={sectionId} section />
                 </div>
-
     )
-
 
 }
 

@@ -112,7 +112,7 @@ export const registerUser = (email, password, displayName, callback) => async di
                 const email = userCredential.user.email.replace(".", ","); 
                 const userId = userCredential.user.uid;
                 const name = userCredential.user.displayName;
-                Firebase.database().ref('/users/${userId}').set({
+                Firebase.database().ref('/users/'  + userId).set({
                     email: email,
                     name: name
                 });

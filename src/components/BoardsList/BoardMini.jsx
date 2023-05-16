@@ -1,8 +1,11 @@
 import React from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
-import styles from './BoardMini.module.css'
-import { deleteBoard } from '../../actions';
+
 import { useDispatch } from "react-redux";
+import styles from './BoardMini.module.css'
+
+import { deleteBoard } from '../../actions';
+
 
 export default function BoardMini(props) {
     const dispatch = useDispatch();

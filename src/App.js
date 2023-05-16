@@ -28,11 +28,11 @@ function App(props) {
      {/* <Board/> */}
 
       <Routes>
-        {/* {!isAuthenticated ? <Route path="/signin" element={SignIn} /> : <Route path="/" element={BoardList} />} */}
+        {!isAuthenticated ? <Route path="/signin" element={<SignIn/>} /> : <Route  element={<BoardList/>} />}
  
-        <Route path='/signin' element={SignIn}/>
-        <Route path='/signup' element={SignUp}/>
-        <Route path='/board/:id'/> 
+        <Route path='/signin' element={<SignIn/>}/>
+        <Route path='/signup' element={<SignUp/>}/>
+        <Route path='/board/:id' element={<Board/>} isAuthenticated={isAuthenticated}/> 
       </Routes>
     </Router>
   );

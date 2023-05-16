@@ -14,15 +14,15 @@ const Header = (props) => {
 
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+    const history = useNavigate();
 
     const handleSignOut = () => {
         dispatch(logoutUser());
-        navigate.push('/signin');
+        history.push('/signin');
     }
 
     const isLoggedIn = (
-        <button className={styles.Buttons} onMouseDown={handleSignOut}>Sign out</button>
+        <button className={styles.Buttons} onMouseDown={handleSignOut}>Выйти</button>
     );
 
     const isLoggedOut = (
@@ -40,7 +40,7 @@ const Header = (props) => {
                 </button>
             </Link>
             <div className={styles.buttonsCont}>
-            {isAuthenticated ? isLoggedIn : isLoggedOut}
+            {(isAuthenticated ? isLoggedIn : isLoggedOut) || null}
             </div>
         </nav>
 

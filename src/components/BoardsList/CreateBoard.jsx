@@ -42,10 +42,10 @@ class CreateBoard extends Component {
 
     render() {
         return (
-            <>
-                    <Button variant="contained" color="primary" onClick={this.Open}>
-                            Создать доску
-                    </Button>
+            <Fragment>
+                <Button variant="contained" color="primary" onClick={this.Open}>
+                        Создать доску
+                </Button>
                 <Dialog open={this.state.open} onClose={this.Open} >
                     <DialogTitle>Создать доску</DialogTitle>
                     <form action="/" method="POST" onSubmit={this.onSubmit}>
@@ -71,7 +71,7 @@ class CreateBoard extends Component {
                         </DialogActions>
                     </form>
                 </Dialog>
-            </>
+            </Fragment>
         )
     }
 }

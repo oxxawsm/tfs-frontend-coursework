@@ -30,7 +30,7 @@ const SignUp = ({ auth, history }) => {
         dispatch(registerUser(state.email, state.password, state.displayName, () => history.push("/")));
     };
 
-    const navigate = (
+    const redirect = (
         <Navigate to="/" />
     );
 
@@ -39,7 +39,7 @@ const SignUp = ({ auth, history }) => {
         <Container component='main' maxWidth='xs'>
         <div className={styles.formWrapper}>
             <h2>
-                Sign Up
+                Регистрация
             </h2>
             <form className={styles.form} onSubmit={handleSignUp}>
                 <TextField
@@ -98,7 +98,11 @@ const SignUp = ({ auth, history }) => {
     </Container> 
     )
 
-    return signUp
+    if (state.toFrontpage) {
+        return redirect;
+    } else {
+        return signUp;
+    }
 }
 
 function mapStateToProps(state) {

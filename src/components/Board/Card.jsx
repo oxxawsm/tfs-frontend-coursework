@@ -24,8 +24,8 @@ const BoardCard = ({text, id, index, sectionId}) => {
         <div>
 
         
-        {(provided) => (
-            <div className={styles.wrapper} ref={provided.innerRef}>
+        {/* {(provided) => ( */}
+            <div className={styles.wrapper} /*ref={provided.innerRef}*/>
                 <Card className={styles.card}>
                     <CardContent className={styles.cardContent}>
                         {'pookich'}
@@ -33,7 +33,7 @@ const BoardCard = ({text, id, index, sectionId}) => {
                     <div className={styles.options} onMouseUp={handleDeleteCard}><DeleteIcon/></div>
                 </Card>
             </div>
-        )}
+        {/* )} */}
         </div>
     )
     

@@ -6,20 +6,26 @@ import Section from './Section';
 import styles from './Board.module.css'
 import { listenBoard, loadBoard, updateBoard, sorting } from '../../actions/board';
 import AddButton from './AddButton';
+import Header from '../Navbar/header';
 
 class Board extends Component {
 
     constructor(props) {
         super(props);
 
-        const boardId = this.props.match.params.id;
+        const boardId = this.props.match?.params?.id;
         this.props.loadBoard(boardId);
     }
 
     componentDidMount() {
-        const boardId = this.props.match.params.id;
+        const boardId = this.props.match?.params?.id;
         this.props.listenBoard(boardId);
     }
+
+    componentWillUnmount() {
+
+    }
+
 
 
     render() {

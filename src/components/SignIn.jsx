@@ -26,20 +26,20 @@ export default function SignIn(props) {
     async function handleSignIn(e) {
         e.preventDefault();
         dispatch(loginUser(state.email, state.password, props.history));
-        // setState({ toFrontpage: true });
+        setState({ toFrontpage: true });
     };
 
-    // const redirect = (
-    //     <Navigate to="/" />
-    // );
+    const redirect = (
+        <Navigate to="/" />
+    );
 
-    return (
+    const signIn = (
         <Container component='main' maxWidth='xs'>
         <div className={styles.formWrapper}>
             <h2>
-                Sign In
+                Вход
             </h2>
-            <form className={styles.form}>
+            <form onSubmit={handleSignIn} className={styles.form}  noValidate>
                 <TextField
                     variant="outlined"
                     margin="normal"
@@ -77,7 +77,7 @@ export default function SignIn(props) {
                     Войти
                 </Button>
                 <div>
-                    <Link to='/signup' variant="body2" component={NavLink}>
+                    <Link variant="body2" to='/signup' component={NavLink}>
                         {"Ещё не с нами? Создать аккаунт"}
                     </Link>
                 </div>
@@ -85,5 +85,11 @@ export default function SignIn(props) {
         </div>
     </Container> 
     )
+
+    if (state.toFrontpage) {
+        return redirect;
+    } else {
+        return signIn;
+    }
 
 }
