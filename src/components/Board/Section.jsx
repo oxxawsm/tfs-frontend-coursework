@@ -4,7 +4,7 @@ import { useDispatch, useStore } from 'react-redux';
 import BoardCard from './Card';
 import AddButton from './AddButton';
 
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from '@material-ui/icons/Delete';
 import styles from './Section.module.css'
 import { deleteSection, updateBoard } from '../../actions/board';
 

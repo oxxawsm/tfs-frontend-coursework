@@ -5,7 +5,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from '@material-ui/icons/Close';
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 

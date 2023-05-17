@@ -3,7 +3,7 @@ import React from 'react';
 import { connect, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import HomeIcon from '@mui/icons-material/Home';
+import HomeIcon from '@material-ui/icons/Home';
 import styles from './header.module.css'
 
 import { logoutUser } from "../../actions";

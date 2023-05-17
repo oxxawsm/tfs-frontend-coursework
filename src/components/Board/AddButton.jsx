@@ -2,7 +2,7 @@ import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import AddIcon from '@mui/icons-material/Add';
+import AddIcon from '@material-ui/icons/Add';
 import TextAreaAutosize from 'react-textarea-autosize';
 import styles from './AddButton.module.css'
 
