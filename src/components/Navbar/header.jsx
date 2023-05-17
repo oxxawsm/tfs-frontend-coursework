@@ -14,11 +14,11 @@ const Header = (props) => {
 
 
     const dispatch = useDispatch();
-    const history = useNavigate();
+    // const history = useNavigate();
 
     const handleSignOut = () => {
         dispatch(logoutUser());
-        history.push('/signin');
+        // history.push('/signin');
     }
 
     const isLoggedIn = (

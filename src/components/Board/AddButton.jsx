@@ -6,7 +6,7 @@ import AddIcon from '@mui/icons-material/Add';
 import TextAreaAutosize from 'react-textarea-autosize';
 import styles from './AddButton.module.css'
 
-import { addCard, addSection , updateBoard } from '../../actions/board';
+import { addCard, addSection, updateBoard } from '../../actions/board';
 
 class AddButton extends Component {
     state = {
@@ -69,8 +69,8 @@ class AddButton extends Component {
 
     renderForm = () => {
         const { section } = this.props;
-        const placeholderText = section ? 'Enter a title for this card...' : 'Enter a section title...';
-        const buttonText = section ? 'Add Card' : 'Add Section';
+        const placeholderText = section ? 'Добавить имя карточки...' : 'Добавить название раздела...';
+        const buttonText = section ? 'Добавить карточку' : 'Добавить раздел';
 
         return (
             <div>

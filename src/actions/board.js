@@ -19,50 +19,63 @@ export const GET_SECTIONS = "GET_SECTIONS";
 export const DRAG_HAPPENED = "DRAG_HAPPENED";
 
 // добавление карточки
+export const addSection = (title) => {
+    return {
+        type: ADD_SECTION,
+        payload: title,
+    };
+};
+
+export const deleteSection = (sectionId) => {
+    return {
+        type: DELETE_SECTION,
+        payload: { sectionId }
+    };
+};
+
 export const addCard = (sectionId, text) => {
     return {
         type: ADD_CARD,
-        payload: {text, sectionId} 
-    }
-}
+        payload: { text, sectionId },
+    };
+};
 
-// удаление карточки
 export const deleteCard = (cardId, sectionId) => {
     return {
         type: DELETE_CARD,
-        payload: {cardId, sectionId}
-    }
-}
+        payload: { cardId, sectionId }
+    };
+};
 
-// наличие доски
 export const requestBoard = () => {
     return {
         type: GET_BOARD_REQUEST,
-    }
-}
+    };
+};
 
-export const getBoard = () => {
+export const getBoard = (board) => {
     return {
         type: GET_BOARD_SUCCESS,
-    }
-}
-
-export const requestUpdateBoard = () => {
-    return {
-        type: UPDATE_BOARD_REQUEST
-    }
-}
-
-export const getUpdateBoard = () => {
-    return {
-        type: UPDATE_BOARD_SUCCESS
-    }
-}
+        board
+    };
+};
 
 export const getBoardError = (uid) => {
     return {
         type: GET_BOARD_FAILED,
         uid
+    };
+};
+
+export const requestUpdateBoard = () => {
+    return {
+        type: UPDATE_BOARD_REQUEST,
+    };
+};
+
+export const getUpdateBoard = () => {
+    return {
+        type: UPDATE_BOARD_SUCCESS,
     };
 };
 
@@ -72,21 +85,6 @@ export const updateBoardError = () => {
     };
 };
 
-// добавление раздела
-export const addSection = (title) => {
-    return{
-        type: ADD_SECTION,
-        payload: title,
-    }
-}
-
-// удаление раздела
-export const deleteSection = (sectionId) => {
-    return {
-        type: DELETE_SECTION,
-        payload: {sectionId}
-    }
-}
 
 export const updateBoard = (board) => dispatch => {
     const user = Firebase.auth().currentUser;

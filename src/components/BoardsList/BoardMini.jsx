@@ -17,9 +17,9 @@ export default function BoardMini(props) {
     return (
             <div className={styles.miniboard} onClick={props.onClick}>
                 <div className={styles.options} onMouseDown={handleDeleteBoard}>
-                    <DeleteIcon/>
+                    <DeleteIcon />
                 </div>
-                <div className={styles.text} >{props.title}</div>
+                <div className={styles.text}>{props.title}</div>
             </div>
     )
 }

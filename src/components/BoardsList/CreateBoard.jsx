@@ -10,9 +10,9 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import styles from './CreateBoard.module.css'
-import { Container } from '@mui/material';
 
-import { createBoard, loadUserBoards } from '../../actions';
+
+import { createBoard, loadUserBoards } from '../../actions/';
 
 class CreateBoard extends Component {
     state = {

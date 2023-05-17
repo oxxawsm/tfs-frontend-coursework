@@ -13,8 +13,9 @@ import BoardCard from './components/Board/Card'
 import Section from './components/Board/Section';
 
 
+
 function App(props) {
-  const { isAuthenticated} = props.auth || {};
+  const { isAuthenticated} = props.auth;
 
   return (
       
@@ -28,9 +29,9 @@ function App(props) {
      {/* <Board/> */}
 
       <Routes>
-        {!isAuthenticated ? <Route path="/signin" element={<SignIn/>} /> : <Route  element={<BoardList/>} />}
+        {!isAuthenticated ? <Route path="/signin" element={<SignIn/>} /> : <Route path='/' element={<BoardList/>} />}
  
-        <Route path='/signin' element={<SignIn/>}/>
+        {/* <Route path='/signin' element={<SignIn/>}/> */}
         <Route path='/signup' element={<SignUp/>}/>
         <Route path='/board/:id' element={<Board/>} isAuthenticated={isAuthenticated}/> 
       </Routes>

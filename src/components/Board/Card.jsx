@@ -22,18 +22,14 @@ const BoardCard = ({text, id, index, sectionId}) => {
 
     return (
         <div>
-
-        
-        {/* {(provided) => ( */}
-            <div className={styles.wrapper} /*ref={provided.innerRef}*/>
+            <div className={styles.wrapper}>
                 <Card className={styles.card}>
                     <CardContent className={styles.cardContent}>
-                        {'pookich'}
+                        {text}
                     </CardContent>
                     <div className={styles.options} onMouseUp={handleDeleteCard}><DeleteIcon/></div>
                 </Card>
             </div>
-        {/* )} */}
         </div>
     )
     

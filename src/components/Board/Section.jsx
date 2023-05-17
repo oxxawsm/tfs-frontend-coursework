@@ -24,12 +24,12 @@ const Section = ({title, cards, sectionId, index}) => {
 
                 <div className={styles.section}>
                     <div className={styles.titleContainer}>
-                        <div className={styles.title}>{'Section'}</div>
+                        <div className={styles.title}>{title}</div>
                         <div className={styles.options} onMouseUp={handleDeleteList}><DeleteIcon /></div>
                     </div>
                     {(cards != null) ?
                         cards.map((card, index) => (
-                       <BoardCard sectionId={sectionId} index={index} text={card.text} key={card.id} id={card.id} listID={sectionId}/>
+                       <BoardCard sectionId={sectionId}  text={card.text} key={card.id} id={card.id}/>
                        )) : null
                     }
 

@@ -1,5 +1,4 @@
 .miniboard {
-    position: relative;
     display: flex;
     height: 80px;
     width: 160px;
@@ -8,8 +7,32 @@
     align-items: left;
     text-align: left;
     color: #fff;
-    background-color: #c05299;
+    background-color: #a06cd5;
     line-height: 20px;
     cursor: pointer;
     font-size: 16px;
+
+    position: relative;
+}
+
+.options {
+   
+    top: 0px;
+    right: 0px;
+    display: inline-block;
+    margin: 5px;
+    border-radius: .3rem;
+    padding: 0.4rem 0.6rem 0.4rem 0.6rem;
+    color: #172b4d;
+    opacity: 0.4;
+
+    position: absolute;
+}
+
+.options:hover {
+    background-color: #e1e2e6;
+}
+
+.text {
+    margin: 10px;
 }

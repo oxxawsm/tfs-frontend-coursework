@@ -68,11 +68,11 @@ const receiveLogout = () => {
     };
 };
 
-const logoutError = () => {
-    return {
-        type: LOGOUT_FAIL
-    };
-};
+// const logoutError = () => {
+//     return {
+//         type: LOGOUT_FAIL
+//     };
+// };
 
 const verifyRequest = () => {
     return {

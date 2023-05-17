@@ -9,8 +9,21 @@
 }
 
 .wrapper {
-    background: rgba(255,255,255,0.85);
+    background: rgba(255,255,255,0.8);
     padding: 2rem;
     border-radius: 10px;
     min-width: 40vh;
+}
+
+.boards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1vw;
+    max-width: 500px;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }

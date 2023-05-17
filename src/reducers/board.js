@@ -7,15 +7,15 @@ import {
     GET_BOARD_FAILED,
     DELETE_CARD,
     DELETE_SECTION,
-    CREATE_BOARD_SUCCESS 
+    CREATE_BOARD_SUCCESS
 } from '../actions';
 
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 function generateId() {
-    return (new uuidv4())
-}
-
+    //  const uniqueId = uuidv4().toString();
+     return uuidv4().toString()
+  }
   
 
 const initialState = {
