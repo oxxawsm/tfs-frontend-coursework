@@ -40,7 +40,7 @@ const createBoardError = () => {
     };
 };
 
-const receiveBoardName = (name, boardId) => {
+const getBoardName = (name, boardId) => {
     return {
         type: GET_BOARD_NAME_SUCCESS,
         name,
@@ -101,7 +101,7 @@ export const loadUserBoards = () => dispatch => {
     // список boardId из /userBoards/
     // список boards titles из /boards/ с помощью boardId
     let boards = [];
-    Firebase.database().ref('/userBoards/' + user?.uid).once('value', function (snapshot) {
+    Firebase.database().ref('/userBoards/' + user.uid).once('value', function (snapshot) {
         snapshot.forEach(function (data) {
             Firebase.database().ref('/boards/' + data.key).once('value', function (snap) {
                 if (snap.exists()) {
@@ -125,6 +125,6 @@ export const updateBoardName = (boardName, boardId) => dispatch => {
 export const listenBoardName = (boardId) => dispatch => {
     Firebase.database().ref('/boards/' + boardId).on('value', function (snapshot) {
         if (snapshot.val() != null)
-            dispatch(receiveBoardName(snapshot.val().title, boardId));
+            dispatch(getBoardName(snapshot.val().title, boardId));
     });
 };

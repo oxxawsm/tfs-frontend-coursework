@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from './BoardList.module.css';
+import FadeIn from 'react-fade-in';
 
 import CreateBoard from './CreateBoard';
 import BoardMini from './BoardMini';
@@ -30,9 +31,11 @@ class BoardList extends Component {
 
     render () {
         return (
+            
             <div className={styles.collection}>
                 <div className={styles.wrapper}>
                 <h3>Ваши доски</h3>
+                <FadeIn>
                     <div className={styles.boards}>
                         {this.props.boards.boards.map((board, index) => (
                                 <div key={board.boardId}>
@@ -47,9 +50,11 @@ class BoardList extends Component {
 
                             ))}
                     </div>
+                    </FadeIn>
                     <CreateBoard />
                 </div>
             </div>
+            
         )
     }
 

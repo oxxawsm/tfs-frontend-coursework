@@ -8,7 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import styles from './Card.module.css'
 import { deleteCard, updateBoard } from '../../actions';
 
-const BoardCard = ({text, id, sectionId}) => {
+const BoardCard = ({text, id, index, sectionId}) => {
     const dispatch = useDispatch();
     const store = useStore();
 
@@ -21,18 +21,19 @@ const BoardCard = ({text, id, sectionId}) => {
 
 
     return (
-        // <Draggable draggableId={String(id)} index={index}>
-        //     {(provided) => (
-            <div className={styles.wrapper} /*ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}*/>
-                <Card className={styles.card}>
-                    <CardContent className={styles.cardContent}>
-                        {text}
-                    </CardContent>
-                    <div className={styles.options} onMouseUp={handleDeleteCard}><DeleteIcon/></div>
-                </Card>
-            </div>
-        //     )}
-        // </Draggable>
+        <Draggable draggableId={String(id)} index={index}>
+            {(provided) => (
+
+                <div className={styles.wrapper} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                    <Card className={styles.card}>
+                        <CardContent className={styles.cardContent}>
+                            {text}
+                        </CardContent>
+                        <div className={styles.options} onMouseUp={handleDeleteCard}><DeleteIcon/></div>
+                    </Card>
+                </div>
+            )}
+        </Draggable>
     )
     
 }

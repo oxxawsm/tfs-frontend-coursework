@@ -9,8 +9,6 @@ import SignUp from './components/SignUp';
 import BoardList from './components/BoardsList/BoardList';
 
 
-
-
 function App(props) {
   const { isAuthenticated} = props.auth;
 

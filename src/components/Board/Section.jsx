@@ -21,20 +21,29 @@ const Section = ({title, cards, sectionId, index}) => {
     }
     
     return (
-            
-                <div className={styles.section}>
+        <Draggable draggableId={String(sectionId)} index={index}>
+             {provided => (
+                <div className={styles.section} {...provided.draggableProps} ref={provided.innerRef} {...provided.dragHandleProps}>
                     <div className={styles.titleContainer}>
                         <div className={styles.title}>{title}</div>
                         <div className={styles.options} onMouseUp={handleDeleteSection}><DeleteIcon /></div>
                     </div>
-                    {(cards != null) ?
-                        cards.map((card) => (
-                       <BoardCard   text={card.text} key={card.id} id={card.id} sectionId={sectionId}/>
-                       )) : null
-                    }
-
+                    <Droppable droppableId={String(sectionId)}>
+                            {(provided) => (
+                                <div {...provided.droppableProps} ref={provided.innerRef}>
+                                    {(cards != null) ?
+                                        cards.map((card, index) => (
+                                            <BoardCard  index={index}  text={card.text} key={card.id} id={card.id} sectionId={sectionId}/>
+                                    )) : null
+                                    }
+                                    {provided.placeholder}
+                                </div>
+                            )}
+                    </Droppable>
                     <AddButton sectionId={sectionId} section />
                 </div>
+             )}
+        </Draggable>
     )
 
 }

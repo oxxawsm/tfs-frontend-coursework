@@ -86,6 +86,27 @@ export const updateBoardError = () => {
     };
 };
 
+export const sorting = (
+    droppableIdStart,
+    droppableIdEnd,
+    droppableIndexStart,
+    droppableIndexEnd,
+    draggableId,
+    type
+) => {
+    return {
+        type: DRAG_HAPPENED,
+        payload: {
+            droppableIdStart,
+            droppableIdEnd,
+            droppableIndexStart,
+            droppableIndexEnd,
+            draggableId,
+            type
+        }
+    };
+};
+
 
 export const updateBoard = (board) => dispatch => {
     const user = Firebase.auth().currentUser;
@@ -95,7 +116,7 @@ export const updateBoard = (board) => dispatch => {
         dispatch(requestUpdateBoard());
         Firebase.database()
             .ref('/board/')
-            .child(board?.boardId)
+            .child(board.boardId)
             .set(board).then(() => {
                 dispatch(getUpdateBoard());
             }).catch((err) => {

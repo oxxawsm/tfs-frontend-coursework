@@ -1,6 +1,6 @@
 import {
     GET_SECTIONS,
-    // DRAG_HAPPENED,
+    DRAG_HAPPENED,
     ADD_CARD,
     ADD_SECTION,
     GET_BOARD_SUCCESS,
@@ -98,7 +98,43 @@ const board = (state = initialState, action) => {
             return { ...state, sections: newSections };
         }
 
+        case DRAG_HAPPENED:
+            const {
+                droppableIdStart,
+                droppableIdEnd,
+                droppableIndexStart,
+                droppableIndexEnd,
+                type
+            } = action.payload;
+            const newState = { ...state };
 
+            //dragging lists around
+            if (type === "section") {
+                const section = newState.sections.splice(droppableIndexStart, 1);
+                newState.sections.splice(droppableIndexEnd, 0, ...section);
+                return newState;
+            }
+
+            //same list
+            if (droppableIdStart === droppableIdEnd) {
+                const section = newState.sections.find(section => droppableIdStart === section.id);
+                const card = section.cards.splice(droppableIndexStart, 1);
+                section.cards.splice(droppableIndexEnd, 0, ...card);
+            }
+
+            //other list
+            if (droppableIdStart !== droppableIdEnd) {
+                const section = newState.sections.find(section => droppableIdStart === section.id);
+                const otherSection = newState.sections.find(section => droppableIdEnd === section.id);
+                const card = section.cards.splice(droppableIndexStart, 1);
+                if (!otherSection.cards) {
+                    otherSection.cards = [...card]
+                } else {
+                    otherSection.cards.splice(droppableIndexEnd, 0, ...card);
+                }
+            }
+
+            return newState;
 
         default:
             return state;
