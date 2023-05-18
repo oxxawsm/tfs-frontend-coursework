@@ -36,11 +36,14 @@ class AddButton extends Component {
     handleAddSection = () => {
         const { text } = this.state;
         if (text) {
+            this.setState({ text: "" });
             this.props.addSection(text);
         }
         setTimeout(() => {
             this.props.updateBoard(this.props.board);
         }, 100);
+       
+        
     }
 
     handleAddCard = () => {
@@ -57,10 +60,10 @@ class AddButton extends Component {
     renderAddButton = () => {
 
         const section = this.props.section
-        const buttonText = section ? 'Add another card' : 'Add another section';
+        const buttonText = section ? 'Добавить карточку' : 'Добавить раздел';
 
         return (
-            <Button className={styles.button}>
+            <Button className={styles.button} onClick={this.openForm}>
                 <AddIcon/>
                 <p>{buttonText}</p>
             </Button>
@@ -71,6 +74,7 @@ class AddButton extends Component {
         const { section } = this.props;
         const placeholderText = section ? 'Добавить имя карточки...' : 'Добавить название раздела...';
         const buttonText = section ? 'Добавить карточку' : 'Добавить раздел';
+
 
         return (
             <div>
@@ -99,6 +103,9 @@ class AddButton extends Component {
 
                 <div className={styles.buttons}>
                     <Button
+                        onMouseDown={section ? this.handleAddCard : this.handleAddSection}
+                        title={buttonText}
+                        variant='contained'
                         style={{
                             color: 'white',
                             backgroundColor: '#5aac44',
@@ -106,9 +113,7 @@ class AddButton extends Component {
                             textTransform: 'capitalize',
                             fontSize: '14px',
                         }}
-                        onMouseDown={section ? this.handleAddCard : this.handleAddSection}
-                        title={buttonText}
-                        variant='contained'
+
                     >
                         {buttonText}
                     </Button>
@@ -121,7 +126,7 @@ class AddButton extends Component {
                         color: 'black',
                     }} 
                     variant='contained'>
-                        close
+                        закрыть
                     </Button>
                 </div>
 

@@ -14,22 +14,22 @@ const Section = ({title, cards, sectionId, index}) => {
     const dispatch = useDispatch();
     const store = useStore();
 
-    const handleDeleteList = () => {
+    const handleDeleteSection = () => {
         dispatch(deleteSection(sectionId));
         const tempboard = store.getState().board;
         dispatch(updateBoard(tempboard));
     }
     
     return (
-
+            
                 <div className={styles.section}>
                     <div className={styles.titleContainer}>
                         <div className={styles.title}>{title}</div>
-                        <div className={styles.options} onMouseUp={handleDeleteList}><DeleteIcon /></div>
+                        <div className={styles.options} onMouseUp={handleDeleteSection}><DeleteIcon /></div>
                     </div>
                     {(cards != null) ?
-                        cards.map((card, index) => (
-                       <BoardCard sectionId={sectionId}  text={card.text} key={card.id} id={card.id}/>
+                        cards.map((card) => (
+                       <BoardCard   text={card.text} key={card.id} id={card.id} sectionId={sectionId}/>
                        )) : null
                     }
 

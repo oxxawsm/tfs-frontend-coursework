@@ -18,7 +18,7 @@ export const GET_SECTIONS = "GET_SECTIONS";
 
 export const DRAG_HAPPENED = "DRAG_HAPPENED";
 
-// добавление карточки
+// добавление раздела
 export const addSection = (title) => {
     return {
         type: ADD_SECTION,
@@ -30,6 +30,7 @@ export const deleteSection = (sectionId) => {
     return {
         type: DELETE_SECTION,
         payload: { sectionId }
+        
     };
 };
 
@@ -94,7 +95,7 @@ export const updateBoard = (board) => dispatch => {
         dispatch(requestUpdateBoard());
         Firebase.database()
             .ref('/board/')
-            .child(board.boardId)
+            .child(board?.boardId)
             .set(board).then(() => {
                 dispatch(getUpdateBoard());
             }).catch((err) => {
@@ -115,6 +116,7 @@ export const loadBoard = (uid) => dispatch => {
     }).catch((err) => {
         dispatch(getBoardError(uid));
     });
+
 };
 
 export const listenBoard = (uid) => dispatch => {

@@ -7,6 +7,7 @@ import styles from './Board.module.css'
 import { listenBoard, loadBoard, updateBoard, sorting } from '../../actions/board';
 import AddButton from './AddButton';
 
+
 class Board extends Component {
 
     constructor(props) {
@@ -31,7 +32,7 @@ class Board extends Component {
             {this.props.auth.isAuthenticated}
                     <div className={styles.board}>
                                <div className={styles.sectionWrapper}>
-                               {(sections != null) ? sections.map((section, index) => (
+                               {(sections != null) ? sections.map((section) => (
                                         <Section 
                                             // index={index}
                                             sectionId={section.id}

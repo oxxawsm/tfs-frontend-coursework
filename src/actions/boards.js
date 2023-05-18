@@ -69,7 +69,7 @@ export const createBoard = (title) => dispatch => {
         Firebase.database().ref('/userBoards/' + uid).child(key).set(true);
         Firebase.database().ref('/board/' + key).set({
             boardId: key,
-            sections: { 0: { id: '0', title: 'ToDo' } },
+            sections: { 0: { id: '0', title: 'TODO' } },
         });
         dispatch(receiveCreateBoard(key));
     }
