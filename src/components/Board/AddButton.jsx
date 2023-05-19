@@ -6,6 +6,8 @@ import AddIcon from '@material-ui/icons/Add';
 import TextAreaAutosize from 'react-textarea-autosize';
 import styles from './AddButton.module.css'
 
+import styled from 'styled-components';
+
 import { addCard, addSection, updateBoard } from '../../actions/board';
 
 class AddButton extends Component {
@@ -61,9 +63,34 @@ class AddButton extends Component {
 
         const section = this.props.section
         const buttonText = section ? 'Добавить карточку' : 'Добавить раздел';
+        const buttonTextColor = section ? '#5e6c84' : 'white';
+        const buttonTextBackground = section ? 'inherit' : 'rgba(0, 0, 0, 0.16)';
+
+        // изменение оформления кнопки в зависимости от расположения
+        const Button = styled.div`
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 8px 8px 8px 8px;
+        cursor: pointer;
+        border-radius: 6px;
+        height: 36px;
+        width: 275px;
+        padding-left: 8px;
+        min-width: 275px;
+        font-size: 14px;
+
+        color: ${buttonTextColor};
+        background-color: ${buttonTextBackground};
+        
+        &:hover {
+            background-color: ${section ? '#e1e2e6' : 'rgba(0, 0, 0, 0.1)'};
+            transition: 0.3s; 
+        }
+        `
 
         return (
-            <Button className={styles.button} onClick={this.openForm}>
+            <Button onClick={this.openForm}>
                 <AddIcon/>
                 <p>{buttonText}</p>
             </Button>
@@ -108,7 +135,7 @@ class AddButton extends Component {
                         variant='contained'
                         style={{
                             color: 'white',
-                            backgroundColor: '#5aac44',
+                            backgroundColor: '#b185db',
                             margin: '0px 8px 8px 8px',
                             textTransform: 'capitalize',
                             fontSize: '14px',

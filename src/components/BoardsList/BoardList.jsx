@@ -22,6 +22,7 @@ class BoardList extends Component {
     };
 
     handleClickBoard(e, boardId) {
+            e.preventDefault();
             this.props.loadBoard(boardId);
             this.props.navigate(`/board/${boardId}`);
 
