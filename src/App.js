@@ -1,7 +1,8 @@
 import React, { Fragment, useEffect } from 'react';
 import { connect } from "react-redux";
 import { Route, BrowserRouter as Router, Routes, Navigate, useNavigate } from "react-router-dom";
-
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Box from '@material-ui/core/Box';
 
 import Header from './components/Navbar/header';
 import Board from './components/Board/Board';
@@ -22,7 +23,13 @@ function App(props) {
 
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Box 
+            sx={{ display: 'flex', width: '100%', height: '100vh', 
+                  justifyContent: 'center', alignItems: 'center'
+                }}>
+                  <CircularProgress 
+                    color='inherit'/>
+            </Box>;
   }
 
   const commonRoutes = <Fragment>
@@ -40,7 +47,7 @@ function App(props) {
 
   const publicRoutes = <Fragment>
     {commonRoutes}
-    <Route path='/' element={<Navigate to='/signin'/>}/>
+    <Route path='/' element={<SignIn />}/>
   </Fragment>
 
   return (
@@ -48,13 +55,6 @@ function App(props) {
       <Header isAuthenticated={isAuthenticated} isLoading={isLoading}/>
       <Routes>
         {isAuthenticated ? privateRoutes : publicRoutes}
-        {/* {!isAuthenticated ? <Route path="/" element={<SignIn/>} /> : <Route path='/' element={<BoardList/>} isAuthenticated={isAuthenticated} isLoading={isLoading}/>}
-
-        <Route path='/' element={<BoardList/>}/>
-        <Route path='/signin' element={<SignIn/>}/>
-        <Route path='/signup' element={<SignUp/>}/>
-
-        <Route path='/board/:id' element={<Board/>} isAuthenticated={isAuthenticated}  isLoading={isLoading}/>  */}
       </Routes>
     </>
   );
