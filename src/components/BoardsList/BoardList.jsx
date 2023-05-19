@@ -39,18 +39,20 @@ class BoardList extends Component {
                 <h3>Ваши доски</h3>
                 <FadeIn>
                     <div className={styles.boards}>
-                        {this.props.boards.boards.map((board, index) => (
-                                <div key={board.boardId}>
-                                    <BoardMini 
-                                    onClick={(e) => this.handleClickBoard(e, board.boardId)} 
-                                    index={index} 
-                                    title={board.title}
-                                    key={board.boardId} 
-                                    boardId={board.boardId}
-                                    />
-                                </div>
+                        { this.props.boards.isLoading ? <div/> :
+                            this.props.boards.boards.map((board, index) => (
+                                    <div key={board.boardId}>
+                                        <BoardMini 
+                                        onClick={(e) => this.handleClickBoard(e, board.boardId)} 
+                                        index={index} 
+                                        title={board.title}
+                                        key={board.boardId} 
+                                        boardId={board.boardId}
+                                        />
+                                    </div>
 
-                            ))}
+                            ))
+                        }
                     </div>
                     </FadeIn>
                     <CreateBoard />
