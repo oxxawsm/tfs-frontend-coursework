@@ -1,7 +1,7 @@
 import { Button, Container, TextField } from '@material-ui/core';
 import React, { useState } from 'react';
 import { useDispatch } from "react-redux";
-import { NavLink, Navigate } from 'react-router-dom';
+import { NavLink, Navigate, useNavigate } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 
 import styles from './SignIn.module.css';
@@ -9,12 +9,10 @@ import { loginUser } from "../actions";
 
 export default function SignIn(props) {
 
-
     const dispatch = useDispatch();
     const [state, setState] = useState({
         email: '',
         password: '',
-        toFrontpage: false,
     });
 
     const onChange = (e) => {
@@ -24,21 +22,15 @@ export default function SignIn(props) {
         });
     };
 
+    const navigateTo = useNavigate();
+
     async function handleSignIn(e) {
         e.preventDefault();
-        dispatch(loginUser(state.email, state.password, props.history));
-        setState({ toFrontpage: true });
-        // setTimeout(function() {
-        //     window.location.reload();
-        //   }, 1000);
-        
+        dispatch(loginUser(state.email, state.password));
+        navigateTo("/");
     };
 
-    const redirect = (
-        <Navigate to="/" />
-    );
-
-    const signIn = (
+    return (
         <Container component='main' maxWidth='xs'>
         <div className={styles.formWrapper}>
             <h2>
@@ -89,11 +81,5 @@ export default function SignIn(props) {
         </div>
     </Container> 
     )
-
-    if (state.toFrontpage) {
-        return redirect;
-    } else {
-        return signIn;
-    }
 
 }

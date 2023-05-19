@@ -87,14 +87,13 @@ const verifySuccess = () => {
 };
 
 
-export const loginUser = (email, password, history) => async dispatch => {
+export const loginUser = (email, password) => async dispatch => {
     dispatch(requestLogin());
     Firebase
         .auth()
         .signInWithEmailAndPassword(email, password)
         .then(user => {
             dispatch(receiveLogin(user));
-            history.push("/");
         })
         .catch(error => {
             dispatch(loginError());
@@ -120,7 +119,7 @@ export const registerUser = (email, password, displayName, callback) => async di
                     userId
                 })
                 dispatch(receiveRegister());
-                callback();
+                // callback();
             });
         })
         .catch(error => {

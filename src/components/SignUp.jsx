@@ -1,21 +1,20 @@
 import { Button, Container, TextField } from '@material-ui/core';
 import React, { useState } from 'react';
 import { connect, useDispatch } from "react-redux";
-import { NavLink, Navigate } from 'react-router-dom';
+import { NavLink, Navigate, useNavigate } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import styles from './SignUp.module.css';
 
 import { registerUser } from "../actions/";
 
 
-const SignUp = ({ auth, history }) => {
+const SignUp = ({ auth }) => {
 
     const dispatch = useDispatch();
     const [state, setState] = useState({
         displayName: '',
         email: '',
         password: '',
-        toFrontpage: false,
     });
 
     const onChange = (e) => {
@@ -25,17 +24,16 @@ const SignUp = ({ auth, history }) => {
         });
     };
 
+    const navigateTo = useNavigate();
+
     const handleSignUp = (e) => {
         e.preventDefault();
-        dispatch(registerUser(state.email, state.password, state.displayName, () => history.push("/")));
+        dispatch(registerUser(state.email, state.password, state.displayName));
+        navigateTo("/");
     };
 
-    const redirect = (
-        <Navigate to="/" />
-    );
 
-
-    const signUp = (
+    return (
         <Container component='main' maxWidth='xs'>
         <div className={styles.formWrapper}>
             <h2>
@@ -97,12 +95,6 @@ const SignUp = ({ auth, history }) => {
         </div>
     </Container> 
     )
-
-    if (state.toFrontpage) {
-        return redirect;
-    } else {
-        return signUp;
-    }
 }
 
 function mapStateToProps(state) {
