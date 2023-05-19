@@ -10,19 +10,17 @@ import { logoutUser } from "../../actions";
 
 const Header = (props) => {
 
-    const { isAuthenticated} = props;
+    const { isAuthenticated, isLoading} = props;
 
 
     const dispatch = useDispatch();
-    // const history = useNavigate();
 
     const handleSignOut = () => {
         dispatch(logoutUser());
-        // history.push('/signin');
     }
 
     const isLoggedIn = (
-        <button className={styles.Buttons} onMouseDown={handleSignOut}>Выйти</button>
+        <button className={styles.Buttons} onClick={handleSignOut}>Выйти</button>
     );
 
     const isLoggedOut = (
@@ -40,7 +38,7 @@ const Header = (props) => {
                 </button>
             </Link>
             <div className={styles.buttonsCont}>
-            {(isAuthenticated ? isLoggedIn : isLoggedOut) || null}
+            {!isLoading ? (isAuthenticated ? isLoggedIn : isLoggedOut) : null}
             </div>
         </nav>
 

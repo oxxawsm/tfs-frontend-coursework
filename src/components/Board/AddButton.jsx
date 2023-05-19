@@ -113,7 +113,6 @@ class AddButton extends Component {
                             textTransform: 'capitalize',
                             fontSize: '14px',
                         }}
-
                     >
                         {buttonText}
                     </Button>

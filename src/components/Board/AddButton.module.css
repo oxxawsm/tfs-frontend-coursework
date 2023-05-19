@@ -11,7 +11,8 @@
     min-width: 275px;
     font-size: 14px;
     line-height: 20px;
-    /* opacity: 1; */
+    color: #ebecf0;
+    opacity: 1;
 }
 
 .button:hover {

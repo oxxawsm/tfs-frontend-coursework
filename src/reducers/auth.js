@@ -15,6 +15,7 @@ import {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (
     state = {
+        isLoading: false,
         loginError: false,
         logoutError: false,
         registerError: false,
@@ -29,12 +30,14 @@ export default (
         case LOGIN_REQUEST:
             return {
                 ...state,
+                isLoading: true,
                 loginError: false,
                 errorMessage: '',
             };
         case LOGIN_SUCCESS:
             return {
                 ...state,
+                isLoading: false,
                 isAuthenticated: true,
                 user: action.user,
                 errorMessage: '',
@@ -42,17 +45,20 @@ export default (
         case LOGIN_FAIL:
             return {
                 ...state,
+                isLoading: false,
                 isAuthenticated: false,
                 loginError: true
             };
         case REGISTER_REQUEST:
             return {
                 ...state,
+                isLoading: true,
                 registerError: false,
             };
         case REGISTER_SUCCESS:
             return {
                 ...state,
+                isLoading: false,
                 isAuthenticated: true,
                 user: action.user
             };
@@ -60,32 +66,38 @@ export default (
             return {
                 ...state,
                 errorMessage: action.message,
+                isLoading: false,
                 isAuthenticated: false,
             };
         case LOGOUT_REQUEST:
             return {
                 ...state,
+                isLoading: true,
                 logoutError: false
             };
         case LOGOUT_SUCCESS:
             return {
                 ...state,
+                isLoading: false,
                 isAuthenticated: false,
                 user: {}
             };
         case LOGOUT_FAIL:
             return {
                 ...state,
+                isLoading: false,
                 logoutError: true
             };
         case VERIFY_REQUEST:
             return {
                 ...state,
+                isLoading: true,
                 verifyingError: false
             };
         case VERIFY_SUCCESS:
             return {
                 ...state,
+                isLoading: false,
                 isAuthenticated: true
             };
         default:

@@ -3,11 +3,12 @@ import React, { useState } from 'react';
 import { useDispatch } from "react-redux";
 import { NavLink, Navigate } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
-import styles from './SignIn.module.css'
 
+import styles from './SignIn.module.css';
 import { loginUser } from "../actions";
 
 export default function SignIn(props) {
+
 
     const dispatch = useDispatch();
     const [state, setState] = useState({
@@ -27,6 +28,10 @@ export default function SignIn(props) {
         e.preventDefault();
         dispatch(loginUser(state.email, state.password, props.history));
         setState({ toFrontpage: true });
+        // setTimeout(function() {
+        //     window.location.reload();
+        //   }, 1000);
+        
     };
 
     const redirect = (
@@ -40,6 +45,7 @@ export default function SignIn(props) {
                 Вход
             </h2>
             <form onSubmit={handleSignIn} className={styles.form}  noValidate>
+                
                 <TextField
                     variant="outlined"
                     margin="normal"
@@ -50,9 +56,7 @@ export default function SignIn(props) {
                     name="email"
                     autoComplete="email"
                     autoFocus
-                    color='secondary'
                     onChange={onChange}
-                    
                 />
                 <TextField
                     variant="outlined"
@@ -63,7 +67,7 @@ export default function SignIn(props) {
                     label="Пароль"
                     type="password"
                     id="password"
-                    color='secondary'
+                    
                     onChange={onChange}
                 />
 

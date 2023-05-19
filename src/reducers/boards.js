@@ -7,13 +7,14 @@ import {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default(
     state = {
+        isLoading: true,
         boards: []
     },
     action
 ) => {
     switch (action.type) {
         case GET_BOARDS_SUCCESS:
-            return { ...state, boards: action.boards };
+            return { ...state, isLoading: false, boards: action.boards };
         case GET_BOARD_NAME_SUCCESS:
             if (!state.boards)
                 return { ...state };
@@ -28,7 +29,7 @@ export default(
             return { ...state, boards: newState };
 
         case GET_BOARDS_REQUEST:
-            return { ...state};
+            return { ...state, isLoading: true};
         default:
             return state;
     }
