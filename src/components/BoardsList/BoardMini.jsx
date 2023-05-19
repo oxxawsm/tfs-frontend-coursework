@@ -11,6 +11,7 @@ export default function BoardMini(props) {
     const dispatch = useDispatch();
 
     const handleDeleteBoard = (e) => {
+        e.preventDefault()
         dispatch(deleteBoard(props.boardId));
     }
 

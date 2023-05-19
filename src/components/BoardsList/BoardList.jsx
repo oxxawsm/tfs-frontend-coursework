@@ -22,11 +22,12 @@ class BoardList extends Component {
     };
 
     handleClickBoard(e, boardId) {
+        if (e.target.className instanceof SVGAnimatedString ) {} 
+        else {
             e.preventDefault();
             this.props.loadBoard(boardId);
             this.props.navigate(`/board/${boardId}`);
-
-    
+        }
     };
 
 
