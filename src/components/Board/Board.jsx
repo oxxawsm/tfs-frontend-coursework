@@ -6,6 +6,7 @@ import FadeIn from 'react-fade-in';
 import Section from './Section';
 import styles from './Board.module.css'
 import AddButton from './AddButton';
+import { withRouter } from '../withRouter_/withRouter';
 // import BoardMenu from '../Navbar/BoardMenu';
 import { listenBoard, loadBoard, updateBoard, sorting } from '../../actions/board';
 
@@ -13,16 +14,18 @@ import { listenBoard, loadBoard, updateBoard, sorting } from '../../actions/boar
 
 class Board extends Component {
 
-    constructor(props) {
-        super(props);
-
-        const boardId = this.props?.match?.params?.id;
-        this.props.loadBoard(boardId);
+    state = {
+        boardId: this.props.board.boardId || this.props.params.id,
     }
 
+    constructor(props) {
+        super(props);
+        this.props.loadBoard(this.state.boardId);
+    }
+
+
     componentDidMount() {
-        const boardId = this.props?.match?.params?.id;
-        this.props.listenBoard(boardId);
+        this.props.listenBoard(this.state.boardId);
     }
 
     componentWillUnmount() {}
@@ -84,4 +87,4 @@ const mapStateToProps = (state) => {
 };
 
 
-export default connect(mapStateToProps, { sorting, updateBoard, loadBoard, listenBoard})(Board)
+export default connect(mapStateToProps, { sorting, updateBoard, loadBoard, listenBoard})(withRouter(Board))

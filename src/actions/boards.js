@@ -101,7 +101,7 @@ export const loadUserBoards = () => dispatch => {
     // список boardId из /userBoards/
     // список boards titles из /boards/ с помощью boardId
     let boards = [];
-    Firebase.database().ref('/userBoards/' + user.uid).once('value', function (snapshot) {
+    Firebase.database().ref('/userBoards/' + user?.uid).once('value', function (snapshot) {
         snapshot.forEach(function (data) {
             Firebase.database().ref('/boards/' + data.key).once('value', function (snap) {
                 if (snap.exists()) {

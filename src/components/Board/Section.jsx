@@ -26,7 +26,7 @@ const Section = ({title, cards, sectionId, index}) => {
                 <div className={styles.section} {...provided.draggableProps} ref={provided.innerRef} {...provided.dragHandleProps}>
                     <div className={styles.titleContainer}>
                         <div className={styles.title}>{title}</div>
-                        <div className={styles.options} onMouseUp={handleDeleteSection}><DeleteIcon /></div>
+                        <div className={styles.options} onClick={handleDeleteSection}><DeleteIcon /></div>
                     </div>
                     <Droppable droppableId={String(sectionId)}>
                             {(provided) => (

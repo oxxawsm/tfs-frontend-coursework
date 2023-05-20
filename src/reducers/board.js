@@ -13,13 +13,12 @@ import {
 import { v4 as uuidv4 } from "uuid";
 
 function generateId() {
-    //  const uniqueId = uuidv4().toString();
      return uuidv4().toString()
   }
   
 
 const initialState = {
-    boardId: generateId(),
+    boardId: '',
     title: '',
     sections: [],
 };
