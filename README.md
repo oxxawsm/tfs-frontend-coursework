@@ -2,6 +2,7 @@
 
 ## Курсовой проект на курсе Tinkoff Fintech School, Frontend, весна 2023
 Выполнила Титенко Елена Витальевна
+
 https://coursework-oxxawsm.vercel.app
 
 ## Описание проекта
