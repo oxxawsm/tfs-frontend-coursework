@@ -70,7 +70,7 @@ const SignUp = ({ auth }) => {
                     required
                     fullWidth
                     name="password"
-                    label="Пароль (более 6 знаков)"
+                    label="Пароль (6 и знаков)"
                     type="password"
                     id="password"
                     color='secondary'
