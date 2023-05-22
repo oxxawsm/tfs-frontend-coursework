@@ -22,11 +22,6 @@
     text-transform: 'capitalize';
     font-size: '14px';
 }
-
-.closeButton {
-    
-}
-
 .button:hover {
     transition: 0.3s;
 }
